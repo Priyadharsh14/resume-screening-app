@@ -2,7 +2,7 @@ import os
 
 import streamlit as st
 
-st.set_page_config(page_title="CloudRiq Resume Screening", page_icon="📄", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Resume Screening", page_icon="📄", layout="wide", initial_sidebar_state="expanded")
 
 # Copy Streamlit secrets into the environment before the app package reads its settings.
 try:
@@ -44,7 +44,7 @@ def login_screen(db):
     with hero:
         with st.container(key="card_hero"):
             st.markdown(
-                '<div class="brand" style="padding:0;color:#fff">CLOUDRIQ</div><span class="tag">RESUME SCREENING PLATFORM</span>'
+                '<div class="brand" style="padding:0;color:#fff">RESUME SCREENING</div><span class="tag">HIRING PLATFORM</span>'
                 '<h2>Hire faster,<br>with clarity.</h2><ul style="padding:0">'
                 '<li>Parse PDF &amp; DOCX resumes automatically</li><li>Transparent 100-point score for every candidate</li>'
                 '<li>Role-based access for your whole HR team</li><li>A human approves every email that goes out</li></ul>',
@@ -93,7 +93,7 @@ def main():
         allowed = [n for n in NAV if n[3] is None or (n[3] == "manager" and user.role in ("admin", "hr_manager")) or (n[3] == "admin" and user.role == "admin")]
         page = st.session_state.setdefault("page", "Dashboard")
         with st.sidebar:
-            st.markdown('<div class="brand">CLOUDRIQ</div>', unsafe_allow_html=True)
+            st.markdown('<div class="brand">RESUME SCREENING</div>', unsafe_allow_html=True)
             for label, icon, _, _ in allowed:
                 active = page == label or (page == "Profile" and label == "Candidates")
                 if st.button(label, icon=icon, key=f"nav_{label}", type="primary" if active else "secondary", use_container_width=True):
@@ -116,7 +116,7 @@ def main():
         else:
             view = next((n[2] for n in allowed if n[0] == page), dashboard)
             view.render(db, user)
-        st.markdown('<div class="sitefoot">© CloudRiq · Internal use only · Scores use skills, experience, education and text similarity only</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sitefoot">© Resume Screening · Internal use only · Scores use skills, experience, education and text similarity only</div>', unsafe_allow_html=True)
     finally:
         db.close()
 

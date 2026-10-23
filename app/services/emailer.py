@@ -6,18 +6,18 @@ import httpx
 from ..config import settings
 
 DEFAULT_TEMPLATES = {
-    "selected": ("Congratulations from CloudRiq - {{job_title}}",
+    "selected": ("Congratulations - {{job_title}}",
                  "Dear {{name}},\n\nWe are pleased to let you know that you have been selected for the "
-                 "{{job_title}} position at CloudRiq. Our HR team will contact you shortly with next steps.\n\n"
-                 "Best regards,\nCloudRiq HR"),
+                 "{{job_title}} position at our company. Our HR team will contact you shortly with next steps.\n\n"
+                 "Best regards,\nThe HR Team"),
     "rejected": ("Update on your application - {{job_title}}",
-                 "Dear {{name}},\n\nThank you for your interest in the {{job_title}} position at CloudRiq. "
+                 "Dear {{name}},\n\nThank you for your interest in the {{job_title}} position at our company. "
                  "After careful review we will not be moving forward with your application at this time. "
-                 "We encourage you to apply for future openings.\n\nBest regards,\nCloudRiq HR"),
+                 "We encourage you to apply for future openings.\n\nBest regards,\nThe HR Team"),
     "on_hold": ("Your application is on hold - {{job_title}}",
-                "Dear {{name}},\n\nThank you for applying for the {{job_title}} position at CloudRiq. "
+                "Dear {{name}},\n\nThank you for applying for the {{job_title}} position at our company. "
                 "Your application is currently on hold and we will get back to you as soon as we can.\n\n"
-                "Best regards,\nCloudRiq HR"),
+                "Best regards,\nThe HR Team"),
 }
 
 

@@ -25,7 +25,7 @@ html, body, [class*="css"], .stApp, button, input, textarea, select {{ font-fami
 section[data-testid="stSidebar"] {{ background: linear-gradient(180deg,#6b7fe8 0%,#6579e2 100%); width: 270px !important; border-right: 0; }}
 section[data-testid="stSidebar"] > div {{ padding-top: 1.2rem; }}
 section[data-testid="stSidebar"] * {{ color: #fff; }}
-.brand {{ font-size: 1.9rem; font-weight: 300; letter-spacing: .18em; padding: .4rem .6rem 1.4rem .6rem; color:#fff; }}
+.brand {{ font-size: 1.2rem; font-weight: 400; letter-spacing: .16em; padding: .4rem .6rem 1.4rem .6rem; color:#fff; }}
 section[data-testid="stSidebar"] .stButton > button {{
   width: 100%; justify-content: flex-start; background: transparent; border: 0; box-shadow: none; border-radius: 10px;
   padding: .55rem .8rem; font-size: .95rem; font-weight: 400; color: #e6ebff; }}
@@ -163,7 +163,7 @@ def card_title(text: str, edit: bool = False) -> str:
 
 def topbar(title: str, sub: str, user) -> None:
     st.markdown(
-        f'<div class="topbar"><div><div class="crumb">CloudRiq · {esc(title)}</div><h1>{esc(title)}</h1><div class="sub">{esc(sub)}</div></div>'
+        f'<div class="topbar"><div><div class="crumb">Resume Screening · {esc(title)}</div><h1>{esc(title)}</h1><div class="sub">{esc(sub)}</div></div>'
         f'<div class="who"><span>{esc(user.role.replace("_", " ").upper())}</span><span class="dot">🔔</span>'
         f'{avatar(user.full_name, 40)}</div></div>', unsafe_allow_html=True)
 

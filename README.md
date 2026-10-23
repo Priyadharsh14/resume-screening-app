@@ -1,4 +1,4 @@
-# CloudRiq Resume Screening (Streamlit)
+# Resume Screening (Streamlit)
 
 Upload resumes (PDF/DOCX) → parse → score 0–100 against a job → HR reviews a ranked list → **Approve & notify** emails the candidate. Roles: Admin, HR Manager, Recruiter.
 
