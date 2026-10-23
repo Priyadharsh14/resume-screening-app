@@ -38,10 +38,19 @@ NAV = [("Dashboard", ":material/dashboard:", dashboard, None), ("Jobs", ":materi
 
 
 def login_screen(db):
-    st.markdown('<div class="loginwrap">', unsafe_allow_html=True)
     first_run = not store.has_users(db)
-    with st.container(key="card_login"):
-        st.markdown('<div class="brand" style="color:#6b7fe8;padding:0 0 .8rem 0">CLOUDRIQ</div>', unsafe_allow_html=True)
+    _, mid, _ = st.columns([0.15, 3, 0.15])
+    hero, form = mid.columns([1.15, 1], gap="medium")
+    with hero:
+        with st.container(key="card_hero"):
+            st.markdown(
+                '<div class="brand" style="padding:0;color:#fff">CLOUDRIQ</div><span class="tag">RESUME SCREENING PLATFORM</span>'
+                '<h2>Hire faster,<br>with clarity.</h2><ul style="padding:0">'
+                '<li>Parse PDF &amp; DOCX resumes automatically</li><li>Transparent 100-point score for every candidate</li>'
+                '<li>Role-based access for your whole HR team</li><li>A human approves every email that goes out</li></ul>',
+                unsafe_allow_html=True)
+    with form, st.container(key="card_login"):
+        st.markdown('<div style="height:2.2rem"></div>', unsafe_allow_html=True)
         if first_run:
             st.markdown(ui.card_title("Create the first admin account"), unsafe_allow_html=True)
             with st.form("setup"):
@@ -65,7 +74,6 @@ def login_screen(db):
                         store_audit(db, u)
                         st.rerun()
                     st.error("Incorrect email or password")
-    st.markdown("</div>", unsafe_allow_html=True)
 
 
 def store_audit(db, u):
@@ -108,6 +116,7 @@ def main():
         else:
             view = next((n[2] for n in allowed if n[0] == page), dashboard)
             view.render(db, user)
+        st.markdown('<div class="sitefoot">© CloudRiq · Internal use only · Scores use skills, experience, education and text similarity only</div>', unsafe_allow_html=True)
     finally:
         db.close()
 

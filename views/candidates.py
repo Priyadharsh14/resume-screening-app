@@ -70,6 +70,13 @@ def render(db, user):
                     st.rerun()
 
     with st.container(key="card_list"):
+        if view:
+            w = [0.3, 3.2, 0.8, 1.3, 0.7, 2.4, 0.9] if manager else [3.2, 0.8, 1.3, 0.7, 2.4, 0.9]
+            names = (["", "Candidate", "Score", "Status", "Exp", "Missing required", ""] if manager
+                     else ["Candidate", "Score", "Status", "Exp", "Missing required", ""])
+            for col, n in zip(st.columns(w), names):
+                col.markdown(f'<div style="color:{ui.MUTED};font-size:.7rem;letter-spacing:.09em;text-transform:uppercase">{n}</div>', unsafe_allow_html=True)
+            st.markdown('<hr style="margin:.1rem 0 .5rem 0">', unsafe_allow_html=True)
         if not view:
             ui.empty("No candidates match. Pick a job and upload resumes, or loosen the filters.")
         for i, a in enumerate(view):

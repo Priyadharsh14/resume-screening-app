@@ -74,7 +74,18 @@ section[data-testid="stSidebar"] hr {{ border-color: rgba(255,255,255,.35); marg
 .hbar .tr {{ flex:1; height:9px; border-radius:6px; background:#eceffa; }} .hbar .tr i {{ display:block; height:100%; border-radius:6px; }} .hbar .ct {{ width:28px; text-align:right; font-weight:500; }}
 .crow {{ display:flex; align-items:center; gap:.9rem; }} .crow .nm {{ font-weight:500; line-height:1.2; }} .crow .em {{ color:{MUTED}; font-size:.76rem; }}
 .empty {{ text-align:center; color:{MUTED}; padding:2.2rem 0; }}
-.loginwrap {{ max-width: 420px; margin: 8vh auto 0 auto; }}
+.loginwrap {{ max-width: 1040px; margin: 5vh auto 0 auto; }}
+[class*="st-key-card"] {{ border: 1px solid #e6ebf8; box-shadow: 0 1px 2px rgba(40,60,140,.04), 0 8px 24px -12px rgba(40,60,140,.12); transition: box-shadow .2s, transform .2s; }}
+[class*="st-key-card_job_"]:hover, [class*="st-key-card_tpl"]:hover {{ box-shadow: 0 12px 28px -10px rgba(40,60,140,.25); transform: translateY(-1px); }}
+.st-key-card_hero {{ background: linear-gradient(145deg,#1f2a6b 0%,#5469d8 55%,#2fc4de 130%) !important; color:#fff; border:0 !important; min-height: 520px; padding: 2.6rem 2.4rem !important; border-radius: 22px !important; }}
+.st-key-card_hero h2 {{ font-size: 2.5rem; font-weight: 600; line-height: 1.12; margin: 2.2rem 0 1.2rem 0; color:#fff; letter-spacing:-.02em; }}
+.st-key-card_hero li {{ color:#e5eaff; margin: .65rem 0; font-size: 1rem; list-style: none; }}
+.st-key-card_hero li:before {{ content:'✓'; display:inline-block; width:22px; height:22px; margin-right:.7rem; border-radius:50%; background:rgba(255,255,255,.2); text-align:center; line-height:22px; font-size:.75rem; }}
+.st-key-card_hero .tag {{ display:inline-block; padding:.2rem .8rem; border:1px solid rgba(255,255,255,.45); border-radius:999px; font-size:.75rem; letter-spacing:.06em; }}
+.st-key-card_login {{ padding: 2.4rem 2.2rem !important; min-height: 520px; display:flex; justify-content:center; border-radius:22px !important; }}
+.thead {{ display:flex; color:{MUTED}; font-size:.7rem; letter-spacing:.09em; text-transform:uppercase; padding:.2rem 0 .6rem 0; border-bottom:1px solid {LINE}; margin-bottom:.4rem; }}
+.crumb {{ color:{MUTED}; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.25rem; }}
+.sitefoot {{ text-align:center; color:{MUTED}; font-size:.76rem; margin-top:2.4rem; padding-top:1rem; border-top:1px solid {LINE}; }}
 
 /* buttons: outlined pill by default, filled for primary */
 .main .stButton > button, .main .stDownloadButton > button, .main [data-testid="stFormSubmitButton"] > button {{
@@ -152,7 +163,7 @@ def card_title(text: str, edit: bool = False) -> str:
 
 def topbar(title: str, sub: str, user) -> None:
     st.markdown(
-        f'<div class="topbar"><div><h1>{esc(title)}</h1><div class="sub">{esc(sub)}</div></div>'
+        f'<div class="topbar"><div><div class="crumb">CloudRiq · {esc(title)}</div><h1>{esc(title)}</h1><div class="sub">{esc(sub)}</div></div>'
         f'<div class="who"><span>{esc(user.role.replace("_", " ").upper())}</span><span class="dot">🔔</span>'
         f'{avatar(user.full_name, 40)}</div></div>', unsafe_allow_html=True)
 
